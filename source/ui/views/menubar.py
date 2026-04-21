@@ -50,6 +50,10 @@ class Menubar(tk.Menu):
 			label="Filter",
 			command=orchestrator.show_filter_form
 		)
+		self.view_menu.add_command(
+			label="Stats",
+			command=orchestrator.show_stats_window
+		)
 
 		self.help_menu.add_command(
 			label="About",

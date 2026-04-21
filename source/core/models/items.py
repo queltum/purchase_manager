@@ -30,13 +30,13 @@ class Items(dict):
 	@property
 	def snapshot(self) -> dict:
 		return {
-			"_id_cnt": self._id_cnt,
+			"id_cnt": self._id_cnt,
 			"items": self
 		}
 
 	@snapshot.setter
 	def snapshot(self, snapshot) -> None:
-		self._id_cnt = snapshot["_id_cnt"]
+		self._id_cnt = snapshot["id_cnt"]
 		self.clear()
 		self.update({
 			item_id: Item(*item)

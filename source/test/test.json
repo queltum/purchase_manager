@@ -1,13 +1,37 @@
 {
-    "_id_cnt": 0,
+    "id_cnt": 3,
     "items": {
         "item_0": [
-            "milk",
-            "dairy",
-            "3",
+            "bread",
+            "Bakery",
+            "2",
             "1",
+            "bought",
+            null
+        ],
+        "item_1": [
+            "milk",
+            "Dairy & Eggs",
+            "2",
+            "3",
+            "bought",
+            null
+        ],
+        "item_2": [
+            "eggs",
+            "Dairy & Eggs",
+            "10",
+            "0.20",
             "planned",
-            ""
+            null
+        ],
+        "item_3": [
+            "pen",
+            "Stationery",
+            "2",
+            "3",
+            "planned",
+            null
         ]
     }
 }

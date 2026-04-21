@@ -20,7 +20,7 @@ class Stats:
 				self.planned_amount += item.price
 
 		self.total_items = len(self.items)
-		self.total_amount = self.total_planned + self.total_bought
+		self.total_amount = self.planned_amount + self.bought_amount
 		self.average_amount = (
 			self.total_amount / self.total_items
 			if self.total_items > 0

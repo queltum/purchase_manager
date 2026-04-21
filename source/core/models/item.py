@@ -50,9 +50,7 @@ class Item(list):
 
 	@property
 	def price(self) -> float:
-		return str(
-			float(self.quantity) * float(self.unit_price)
-		)
+		return float(self.quantity) * float(self.unit_price)
 
 	@property
 	def profile(self) -> tuple:

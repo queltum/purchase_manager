@@ -1,19 +1,19 @@
 from ui.views.forms import *
+from tkinter import messagebox, filedialog
+from ui.views import ItemsView, StatsView
+from core.models import Items, Stats
 from core.mappers import ItemMapper, StatsMapper
+from core.provider import Provider
 
 class Orchestrator:
 	def __init__(
 		self, 
-		master,
-		items,
-		stats,
-		items_view,
-		stats_view
+		master
 	):
-		self.items = items
-		self.stats = stats
-		self.items_view = items_view
-		self.stats_view = stats_view
+		self.items = Items()
+		self.stats = Stats(self.items)
+		self.items_view = ItemsView(master)
+		self.stats_view = StatsView(master, self.get_stats_data)
 
 		self.add_form = AddForm(master, self.add_item)
 		self.edit_form = EditForm(
@@ -31,6 +31,10 @@ class Orchestrator:
 
 	def show_filter_form(self) -> None:
 		self.filter_form.show()
+
+	def show_stats_window(self) -> None:
+		self.stats.update()
+		self.stats_view.show()
 
 	def get_item_data(self):
 		return ItemMapper.to_view(
@@ -51,6 +55,8 @@ class Orchestrator:
 			self.items.include(item)
 		)
 		self.add_form.hide()
+		self.stats.update()
+		self.stats_view.update()
 
 	def edit_item(self, data) -> None:
 		item = ItemMapper.to_model(data)
@@ -58,6 +64,8 @@ class Orchestrator:
 		self.items_view.replace(item.profile, item_id)
 		self.items.replace(item, item_id)
 		self.edit_form.hide()
+		self.stats.update()
+		self.stats_view.update()
 
 	def apply_filter(self, data) -> None:
 		self.discard_filter()
@@ -85,38 +93,44 @@ class Orchestrator:
 		):
 			self.items.remove(selected)
 			self.items_view.remove(selected)
+			self.stats.update()
+			self.stats_view.update()
 
 	def mark_as_bought(self) -> None:
 		item_id = self.items_view.get_selection()
 		self.items[item_id].status = "bought"
 		self.items_view.set_status(item_id, "bought")
+		self.stats.update()
+		self.stats_view.update()
 
 	def mark_as_planned(self) -> None:
 		item_id = self.items_view.get_selection()
 		self.items[item_id].status = "planned"
 		self.items_view.set_status(item_id, "planned")
+		self.stats.update()
+		self.stats_view.update()
 
 	def load_data(self) -> None:
-		# path = filedialog.askopenfilename(
-		# 	title="Choose a file",
-		# 	filetypes=[
-		# 		("JSON files", "*.json"), 
-		# 		("All files", ".")
-		# 	]
-		# )
+		path = filedialog.askopenfilename(
+			title="Choose a file",
+			filetypes=[
+				("JSON files", "*.json"), 
+				("All files", ".")
+			]
+		)
 
-		# if path:
-		# 	self.items.snapshot = Provider.import_list(path)
-		# 	self.view.update(self.items.profile)
-		pass
+		if path:
+			self.items_view.drop()
+			self.items.snapshot = Provider.import_list(path)
+			self.items_view.import_items(self.items.profile)
+			self.items_view.apply_tags()
 
 	def save_data(self) -> None:
-		# path = filedialog.asksaveasfilename(
-		# 	title="Save a file",
-		# 	defaultextension=".json",
-		# 	filetypes=[("JSON files", "*.json")]
-		# )
+		path = filedialog.asksaveasfilename(
+			title="Save a file",
+			defaultextension=".json",
+			filetypes=[("JSON files", "*.json")]
+		)
 
-		# if path:
-		# 	Provider.export_list(path, self.items.profile)
-		pass
+		if path:
+			Provider.export_list(path, self.items.snapshot)

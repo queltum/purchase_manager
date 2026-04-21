@@ -50,8 +50,8 @@ class ItemsView(ttk.Treeview):
 			tags=(values[3],)
 		)
 
-	def remove(self) -> None:
-		self.delete(self.get_selection())
+	def remove(self, item_id) -> None:
+		self.delete(item_id)
 
 	def replace(self, values, item_id) -> None:
 		self.item(item_id, values=values, tag=(values[3], ))

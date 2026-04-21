@@ -6,19 +6,14 @@ class StatsMapper(BaseMapper):
 	@staticmethod
 	def to_view(model: Stats) -> StatsData:
 		return StatsData(
-			str(model.total_items),
-			str(model.total_amount),
-			str(model.average_amount),
-			str(model.bought_amount),
-			str(model.planned_amount)
+			f"Total items: {model.total_items}",
+			f"Total amount: {model.total_amount}",
+			f"Average amount: {model.average_amount}",
+			f"Bought amount: {model.bought_amount}",
+			f"Planned amount: {model.planned_amount}"
 		)
 
+	# todo
 	@staticmethod
-	def to_model(view: StatsData) -> Stats:
-		return Stats(
-			float(view.total_items),
-			float(view.total_amount),
-			float(view.average_amount),
-			float(view.bought_amount),
-			float(view.planned_amount)
-		)
+	def to_model(data: StatsData) -> None:
+		pass
