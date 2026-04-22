@@ -9,7 +9,8 @@ class ItemsView(ttk.Treeview):
 		super().__init__(
 			master,
 			columns=config.COLUMNS,
-			show="headings"
+			show="headings",
+			selectmode="browse"
 		)
 
 		self.scrollbar = ttk.Scrollbar(

@@ -1,4 +1,4 @@
-from core.models.item import Item
+from core.models import Item
 
 class Items(dict):
 	def __init__(self):
