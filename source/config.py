@@ -8,19 +8,27 @@ CATEGORIES = [
 	"Stationery", "Other" 
 ]
 
-WIDTHS = [120, 120, 120]
-ANCHORS = ["center", "center", "center"]
+WIDTHS = [120] * 7
+ANCHORS = ["center"] * 7
 
-STATUSES = ["planned", "bought"]
-COLUMNS = ["Name", "Quantity", "Price", "Status"]
+BOUGHT = "bought"
+PLANNED = "planned"
+STATUSES = [PLANNED, BOUGHT]
+
+COLUMNS = [
+	"Name", "Category", "Quantity", 
+	"Unit price", "Total price", "Date", "Status"
+]
 DISPLAYED_COLUMNS = ["Name", "Quantity", "Price"]
 
 ITEM_NAME_TITLE = "Name:"
 ITEM_CATEGORY_TITLE = "Category:"
 ITEM_QUANTITY_TITLE = "Quantity:"
 ITEM_UNIT_PRICE_TITLE = "Unit price:"
-ITEM_STATUS_TITLE = "Status:"
+ITEM_STORE_TITLE =  "Store:"
 ITEM_DATE_TITLE = "Date:"
+ITEM_PLANNED_DATE_TITLE = "Date:"
+ITEM_STATUS_TITLE = "Status:"
 
 ITEM_NAME = "name"
 ITEM_CATEGORY = "category"

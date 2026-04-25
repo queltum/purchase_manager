@@ -10,10 +10,10 @@ class ItemMapper(BaseMapper):
 		return Item(
 			data.name,
 			data.category,
-			data.quantity,
-			data.unit_price,
-			data.status,
-			data.date
+			int(data.quantity),
+			float(data.unit_price),
+			data.planned_date,
+			data.status
 		)
 
 	@staticmethod
@@ -25,6 +25,6 @@ class ItemMapper(BaseMapper):
 			category=item.category,
 			quantity=item.quantity,
 			unit_price=item.unit_price,
-			status=item.status,
-			date=item.date
+			planned_date=item.planned_date,
+			status=item.status
 		)

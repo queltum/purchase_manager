@@ -1,3 +1,4 @@
+import config
 from ui.views.forms import *
 from tkinter import messagebox, filedialog
 from ui.views import ItemsView, StatsView
@@ -49,26 +50,27 @@ class Orchestrator:
 		)
 
 	def add_item(self, data) -> None:
+		self.add_form.hide()
 		item = ItemMapper.to_model(data)
 		self.items_view.include(
 			item.profile,
 			self.items.include(item)
 		)
-		self.add_form.hide()
 		self.stats.update()
 		self.stats_view.update()
 
 	def edit_item(self, data) -> None:
+		self.edit_form.hide()
 		item = ItemMapper.to_model(data)
 		item_id = self.items_view.get_selection()
 		self.items_view.replace(item.profile, item_id)
 		self.items.replace(item, item_id)
-		self.edit_form.hide()
 		self.stats.update()
 		self.stats_view.update()
 
 	def apply_filter(self, data) -> None:
 		self.discard_filter()
+		self.items_view.selection_set(())
 
 		for pid in self.items:
 			item = self.items[pid]
@@ -76,7 +78,7 @@ class Orchestrator:
 			if (
 				(data.category and item.category != data.category) or
 				(data.status and item.status != data.status) or
-				(data.date and item.date != data.date)
+				(data.planned_date and item.planned_date != data.planned_date)
 			):
 				self.items_view.hide(pid)
 
@@ -98,15 +100,8 @@ class Orchestrator:
 
 	def mark_as_bought(self) -> None:
 		item_id = self.items_view.get_selection()
-		self.items[item_id].set_status("bought")
-		self.items_view.set_status(item_id, "bought")
-		self.stats.update()
-		self.stats_view.update()
-
-	def mark_as_planned(self) -> None:
-		item_id = self.items_view.get_selection()
-		self.items[item_id].set_status("planned")
-		self.items_view.set_status(item_id, "planned")
+		self.items.set_status(item_id, config.BOUGHT)
+		self.items_view.replace(self.items[item_id].profile, item_id)
 		self.stats.update()
 		self.stats_view.update()
 

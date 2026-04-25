@@ -38,10 +38,6 @@ class Menubar(tk.Menu):
 			command=orchestrator.mark_as_bought
 		)
 		self.edit_menu.add_command(
-			label="Mark as planned",
-			command=orchestrator.mark_as_planned
-		)
-		self.edit_menu.add_command(
 			label="Remove product", 
 			command=orchestrator.remove_item
 		)

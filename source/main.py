@@ -1,8 +1,5 @@
 import ui
 import core
-
-from core.models import Item
-
 import tkinter as tk
 
 def main() -> None:

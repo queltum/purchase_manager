@@ -15,9 +15,9 @@ class Stats:
 
 		for item in self.items.values():
 			if item.is_bought():
-				self.bought_amount += item.price
+				self.bought_amount += item.total_price
 			else:
-				self.planned_amount += item.price
+				self.planned_amount += item.total_price
 
 		self.total_items = len(self.items)
 		self.total_amount = self.planned_amount + self.bought_amount

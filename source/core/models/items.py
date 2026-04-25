@@ -14,6 +14,9 @@ class Items(dict):
 		self[item_id] = item
 		return item_id
 
+	def set_status(self, item_id, status) -> None:
+		self[item_id].status = status
+
 	def replace(self, item: Item, item_id) -> None:
 		self[item_id] = item
 

@@ -17,7 +17,7 @@ class FilterForm(BaseForm):
 		return ItemData(
 			category=self.category_cbx.get(),
 			status=self.status_cbx.get(),
-			date=self.date_ent.get()
+			planned_date=self.planned_date_ent.get()
 		)
 
 	def on_hide(self) -> None:
@@ -26,7 +26,7 @@ class FilterForm(BaseForm):
 	def reset(self) -> None:
 		self.category_cbx.set("")
 		self.status_cbx.set("")
-		self.date_ent.delete(0, tk.END)
+		self.planned_date_ent.delete(0, tk.END)
 
 	def create_widgets(self) -> None:
 		self.category_lbl = tk.Label(
@@ -37,7 +37,7 @@ class FilterForm(BaseForm):
 			self.window,
 			text=config.ITEM_STATUS_TITLE
 		)
-		self.date_lbl = tk.Label(
+		self.planned_date_lbl = tk.Label(
 			self.window,
 			text=config.ITEM_DATE_TITLE
 		)
@@ -48,7 +48,7 @@ class FilterForm(BaseForm):
 		self.status_cbx = ttk.Combobox(
 			self.window, values=config.STATUSES
 		)
-		self.date_ent = tk.Entry(self.window)
+		self.planned_date_ent = tk.Entry(self.window)
 
 		self.discard_btn = tk.Button(
 			self.window,
@@ -77,7 +77,7 @@ class FilterForm(BaseForm):
 			padx=4,
 			pady=4
 		)
-		self.date_lbl.grid(
+		self.planned_date_lbl.grid(
 			row=2,
 			column=0,
 			sticky="ew",
@@ -99,7 +99,7 @@ class FilterForm(BaseForm):
 			padx=4,
 			pady=4
 		)
-		self.date_ent.grid(
+		self.planned_date_ent.grid(
 			row=2,
 			column=1,
 			sticky="ew",

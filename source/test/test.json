@@ -1,37 +1,117 @@
 {
-    "id_cnt": 3,
+    "id_cnt": 14,
     "items": {
         "item_0": [
             "bread",
             "Bakery",
-            "2",
-            "1",
-            "bought",
-            null
-        ],
-        "item_1": [
-            "milk",
-            "Dairy & Eggs",
-            "2",
-            "3",
-            "bought",
-            null
+            3,
+            1.0,
+            "25/04/26",
+            "planned"
         ],
         "item_2": [
-            "eggs",
+            "milk",
             "Dairy & Eggs",
-            "10",
-            "0.20",
-            "planned",
-            null
+            2,
+            12.0,
+            "25/04/26",
+            "planned"
         ],
         "item_3": [
-            "pen",
-            "Stationery",
-            "2",
-            "3",
-            "planned",
-            null
+            "eggs",
+            "Dairy & Eggs",
+            10,
+            0.75,
+            "25/04/26",
+            "planned"
+        ],
+        "item_4": [
+            "apple",
+            "Fruit & Vegetables",
+            5,
+            1.0,
+            "25/04/26",
+            "planned"
+        ],
+        "item_5": [
+            "cheese",
+            "Dairy & Eggs",
+            1,
+            10.0,
+            "25/04/26",
+            "planned"
+        ],
+        "item_6": [
+            "butter",
+            "Dairy & Eggs",
+            1,
+            5.0,
+            "25/04/26",
+            "planned"
+        ],
+        "item_7": [
+            "chicken",
+            "Meats",
+            2,
+            10.0,
+            "25/04/26",
+            "planned"
+        ],
+        "item_8": [
+            "Salmon",
+            "Fish & Seafood",
+            4,
+            21.0,
+            "25/04/26",
+            "planned"
+        ],
+        "item_9": [
+            "Shrimp",
+            "Fish & Seafood",
+            30,
+            2.0,
+            "25/04/26",
+            "planned"
+        ],
+        "item_10": [
+            "Muffins",
+            "Bakery",
+            5,
+            3.0,
+            "25/04/26",
+            "planned"
+        ],
+        "item_11": [
+            "cookies",
+            "Bakery",
+            20,
+            0.5,
+            "25/04/26",
+            "planned"
+        ],
+        "item_12": [
+            "cake",
+            "Bakery",
+            2,
+            13.0,
+            "25/04/26",
+            "planned"
+        ],
+        "item_13": [
+            "pizza",
+            "Frozen",
+            2,
+            15.0,
+            "25/04/26",
+            "planned"
+        ],
+        "item_14": [
+            "Vegetables",
+            "Frozen",
+            2,
+            5.0,
+            "25/04/26",
+            "planned"
         ]
     }
 }

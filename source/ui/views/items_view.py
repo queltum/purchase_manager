@@ -20,13 +20,12 @@ class ItemsView(ttk.Treeview):
 		)
 
 		for column, width, anchor in zip(
-			config.DISPLAYED_COLUMNS,
+			config.COLUMNS,
 			config.WIDTHS, 
 			config.ANCHORS
 		):
 			self.heading(column, text=column)
 			self.column(column, width=width, anchor=anchor)
-		self["displaycolumns"] = config.DISPLAYED_COLUMNS
 		self.configure(yscrollcommand=self.scrollbar.set)
 		self.tag_configure("bought", background="lightgreen")
 		self.tag_configure("planned", background="lightyellow")
@@ -48,14 +47,14 @@ class ItemsView(ttk.Treeview):
 			"end",
 			iid=item_id,
 			values=values,
-			tags=(values[3],)
+			tags=(values[-1],)
 		)
 
 	def remove(self, item_id) -> None:
 		self.delete(item_id)
 
 	def replace(self, values, item_id) -> None:
-		self.item(item_id, values=values, tag=(values[3], ))
+		self.item(item_id, values=values, tag=(values[-1],))
 
 	def hide(self, item_id) -> None:
 		self.detach(item_id)
@@ -70,18 +69,13 @@ class ItemsView(ttk.Treeview):
 			raise NoSelectionError("No item selected")
 		return selected[0]
 
-	def set_status(self, item_id, status) -> None:
-		values = list(self.item(item_id)["values"])
-		values[3] = status
-		self.item(item_id, values=values, tag=(status, ))
-
 	def apply_tags(self) -> None:
 		for item_id in self.get_children():
 			self.item(
 				item_id,
 				tags=(self.item(
 					item_id
-				)["values"][3],)
+				)["values"][-1],)
 			)
 
 	def drop(self) -> None:
