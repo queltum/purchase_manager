@@ -46,6 +46,8 @@ class Item(list):
 	def set_status(self, status) -> None:
 		if status == "bought":
 			self.date = datetime.now().strftime("%d/%m/%Y")
+		else:
+			self.date = ""
 		self.status = status
 
 	@property

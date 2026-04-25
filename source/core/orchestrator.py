@@ -98,14 +98,14 @@ class Orchestrator:
 
 	def mark_as_bought(self) -> None:
 		item_id = self.items_view.get_selection()
-		self.items[item_id].status = "bought"
+		self.items[item_id].set_status("bought")
 		self.items_view.set_status(item_id, "bought")
 		self.stats.update()
 		self.stats_view.update()
 
 	def mark_as_planned(self) -> None:
 		item_id = self.items_view.get_selection()
-		self.items[item_id].status = "planned"
+		self.items[item_id].set_status("planned")
 		self.items_view.set_status(item_id, "planned")
 		self.stats.update()
 		self.stats_view.update()
